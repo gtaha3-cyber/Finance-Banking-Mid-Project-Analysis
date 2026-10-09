@@ -1,0 +1,63 @@
+CLEANING NOTES
+
+1. Duplicates
+   Issue:  624 fully duplicated rows.
+   Action: Drop duplicates, keep the first occurrence.
+
+2. Missing values - merchant_name
+   Issue:  7,246 missing values (13.8%).
+   Action: Fill with "Unknown".
+
+3. Missing values - credit_score
+   Issue:  16,987 missing values (32.7%).
+   Action: Keep as NaN and exclude only from credit score analysis.
+           (Mean/median, group-based and KNN imputation were tested;
+           credit_score has no relationship with any other column,
+           so any filled value would be invented.)
+
+4. Inconsistent text case
+   Issue:  Same value written differently in account_status,
+           payment_method, aml_check_status and kyc_status
+           (e.g. active / Active / ACTIVE).
+   Action: Standardize the text case.
+
+5. Mixed date formats - transaction_date
+   Issue:  4 different date formats; some dates are ambiguous
+           (e.g. 06/11/2024).
+   Action: Convert to one datetime format; treat ambiguous dates
+           as day-first (European format).
+
+6. Wrong data types
+   Issue:  transaction_date and created_at are stored as text.
+   Action: Convert to datetime.
+
+7. Negative amounts
+   Issue:  About 50% of amounts are negative in every transaction
+           type, including deposits.
+   Action: Use the absolute value of amount.
+
+8. Outliers - amount
+   Issue:  220 extreme values (78K to 4.7 million).
+   Action: Keep them (may signal fraud or large valid transactions).
+           Add an is_outlier flag column (IQR method), use the median
+           instead of the mean, and use a log scale in charts.
+
+9. Unreliable created_at
+   Issue:  All values are in 2023; 62% are before the transaction date.
+   Action: Drop created_at; use transaction_date for time analysis.
+
+10. Multiple currencies
+   Issue:  Amounts are in 5 currencies (EUR, USD, GBP, CHF, PLN).
+   Action: Analyze amounts per currency (do not sum across currencies).
+
+11. Unnecessary columns
+   Issue:  ip_address is unique per row; customer_name repeats
+           across customers.
+   Action: Drop ip_address and customer_name; use customer_id.
+
+12. Synthetic data patterns (no fix needed)
+   Issue:  Fraud rate is 50% and categories are evenly distributed.
+   Action: Report "no difference" results as findings.
+
+Note: Steps 1, 7 and 8 must run in this order
+      (duplicates -> absolute value -> outliers).
