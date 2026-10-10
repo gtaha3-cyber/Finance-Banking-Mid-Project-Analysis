@@ -42,14 +42,18 @@ CLEANING NOTES
            Add an is_outlier flag column (IQR method), use the median
            instead of the mean, and use a log scale in charts.
 
-9. Unreliable created_at
-   Issue:  Stored as text; all values are in 2023; 62% are before
-           the transaction date.
+9. Unnecessary column - created_at
+   Issue:  created_at is a system record timestamp, not the
+           transaction date.
    Action: Drop created_at; use transaction_date for time analysis.
 
 10. Multiple currencies
-   Issue:  Amounts are in 5 currencies (EUR, USD, GBP, CHF, PLN).
-   Action: Analyze amounts per currency (do not sum across currencies).
+   Issue:  Amounts are in 5 currencies (EUR, USD, GBP, CHF, PLN),
+           but the median amount is almost the same in all of them
+           (about 25,000), so amounts were generated without
+           considering the currency.
+   Action: Do not convert or sum amounts; base the analysis on
+           transaction counts instead of values.
 
 11. Unnecessary columns
    Issue:  ip_address is unique per row; customer_name repeats
