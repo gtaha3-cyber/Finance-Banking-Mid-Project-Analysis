@@ -34,7 +34,7 @@ with tab1:
     fig = px.pie(data_frame=plot_df, names='channel_group', values='count', hole=0.45,
                  title='Digital vs Non-Digital Transactions',
                  color_discrete_sequence=['#7b1e3a', '#f6a96b'])
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 with tab2:
     plot_df = channel_years.reset_index()
@@ -43,7 +43,7 @@ with tab2:
                  text_auto=True, color_discrete_map={'Growing': '#81c784', 'Declining': '#e57373'},
                  title='Change in Transactions from 2022 to 2025 by Channel (%)',
                  labels={'change_%': 'Change from 2022 to 2025 (%)', 'transaction_channel': 'Channel', 'trend': ''})
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 with tab3:
     channels = st.multiselect('Choose channels', sorted(df['transaction_channel'].unique()),
@@ -53,7 +53,7 @@ with tab3:
                   title='Transactions per Year by Channel',
                   labels={'transaction_id': 'Num of Transactions', 'transaction_channel': 'Channel', 'year': 'Year'},
                   color_discrete_sequence=['#7b1e3a', '#f6a96b', '#9aa0a6', '#c45c7a', '#4a0f22', '#f3d1b0', '#5f6368'])
-    st.plotly_chart(fig.update_xaxes(dtick=1), use_container_width=True)
+    st.plotly_chart(fig.update_xaxes(dtick=1), width='stretch')
 
 # ---------------- Insight ----------------
 st.info('**Key insight:** digital channels handle only about 29% of transactions and are not growing '

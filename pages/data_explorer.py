@@ -41,7 +41,7 @@ st.columns(4)[0].metric('Matching Transactions', f'{len(result):,}', border=True
 columns = ['transaction_id', 'transaction_date', 'customer_id', 'customer_segment', 'account_type',
            'account_status', 'transaction_type', 'transaction_channel', 'branch_city', 'amount', 'currency',
            'risk_score', 'fraud_flag', 'aml_check_status', 'kyc_status']
-st.dataframe(result[columns].head(1000), hide_index=True, use_container_width=True,
+st.dataframe(result[columns].head(1000), hide_index=True, width='stretch',
              column_config={'transaction_date': st.column_config.DateColumn('transaction_date', format='YYYY-MM-DD')})
 st.caption('The table shows up to 1,000 rows. Use the download button to get all matching rows.')
 

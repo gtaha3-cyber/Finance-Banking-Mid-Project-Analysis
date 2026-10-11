@@ -38,7 +38,7 @@ fig = px.bar(data_frame=plot_df, x=col, y='is_outlier', text_auto=True,
              title=f'Large Transactions Rate by {choice} (%)',
              labels={col: choice, 'is_outlier': 'Large Transactions (%)'},
              color_discrete_sequence=['#7b1e3a'])
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, width='stretch')
 
 st.divider()
 
@@ -52,7 +52,7 @@ fig = px.bar(data_frame=plot_df, x='account_status', y='transaction_id', color='
                      'aml_check_status': 'AML Check'},
              color_discrete_sequence=['#7b1e3a', '#f6a96b', '#9aa0a6', '#c45c7a', '#f3d1b0'])
 fig.update_traces(textangle=0).update_layout(uniformtext_minsize=10, uniformtext_mode='hide')
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, width='stretch')
 
 # ---------------- Insight ----------------
 st.info('**Key insight:** large transactions are rare (0.42%) and most common in Loan and Mortgage accounts '

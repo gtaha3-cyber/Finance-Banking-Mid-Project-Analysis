@@ -35,7 +35,7 @@ with tab1:
                  title='Transactions with Compliance Red Flags (%)',
                  labels={'red_flag': 'Red Flag', 'share_%': 'Share of Transactions (%)'},
                  color_discrete_sequence=['#7b1e3a'])
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 with tab2:
     view = st.segmented_control('Show', ['Number of transactions', '% of each KYC status'],
@@ -47,7 +47,7 @@ with tab2:
     fig = px.imshow(plot_df, text_auto=True, color_continuous_scale=['#f7f7f8', '#7b1e3a'],
                     title='KYC Status vs AML Check Status',
                     labels={'x': 'AML Check', 'y': 'KYC Status', 'color': 'Value'})
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
     st.caption('With %, the AML "Passed" rate is about the same for every KYC status, '
                'so the AML check does not take the KYC status into account.')
 
@@ -69,7 +69,7 @@ with tab3:
                  title='Fraud Rate by Risk Score Band',
                  labels={'risk_band': 'Risk Score Band', 'fraud_flag': 'Fraud Rate (%)'},
                  color_discrete_sequence=['#f6a96b'])
-    st.plotly_chart(fig.update_yaxes(range=[0, 100]), use_container_width=True)
+    st.plotly_chart(fig.update_yaxes(range=[0, 100]), width='stretch')
 
 # ---------------- Insight ----------------
 st.info('**Key insight:** about 73% of transactions have at least one compliance red flag, 6,982 transactions passed AML '

@@ -45,7 +45,7 @@ with tab1:
                  text_auto=',d', title='Transactions and Active Customers per Year',
                  labels={'value': 'Count', 'variable': '', 'year': 'Year'},
                  color_discrete_sequence=['#7b1e3a', '#f6a96b'])
-    st.plotly_chart(fig.update_xaxes(dtick=1), use_container_width=True)
+    st.plotly_chart(fig.update_xaxes(dtick=1), width='stretch')
 
 with tab2:
     plot_df = df.groupby(df['transaction_date'].dt.to_period('M').dt.to_timestamp())['transaction_id'].count().reset_index()
@@ -53,7 +53,7 @@ with tab2:
                   title='Monthly Number of Transactions',
                   labels={'transaction_date': 'Month', 'transaction_id': 'Num of Transactions'},
                   color_discrete_sequence=['#7b1e3a'])
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 # ---------------- Insight ----------------
 st.info('**Key insight:** transactions and active customers are stable at about 13,000 per year, '

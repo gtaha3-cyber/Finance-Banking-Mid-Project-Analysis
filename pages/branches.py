@@ -45,7 +45,7 @@ with tab1:
                          title='Branch Cities in Germany (green = growing, red = declining)', height=600)
     fig.update_geos(fitbounds='locations', showcountries=True, countrycolor='#9aa0a6',
                     showland=True, landcolor='#ffffff', showocean=True, oceancolor='#e6e7eb')
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 with tab2:
     plot_df = branch_years.reset_index()
@@ -54,7 +54,7 @@ with tab2:
                  title='Total Change in Transactions from 2022 to 2025 by Branch City (%)',
                  labels={'change_%': 'Change from 2022 to 2025 (%)', 'branch_city': 'Branch City', 'trend': ''},
                  height=550)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 with tab3:
     plot_df = df.groupby(['branch_city', 'year'])['transaction_id'].count().reset_index(name='transactions')
@@ -67,7 +67,7 @@ with tab3:
                      title='Yearly Growth or Decline in Transactions by Branch City (%)',
                      labels={'year': 'Year (compared to previous year)', 'branch_city': 'Branch City', 'trend': ''})
     fig.update_traces(marker_size=16, textposition='middle right').update_xaxes(dtick=1)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 st.divider()
 
@@ -91,10 +91,10 @@ fig = px.line(data_frame=plot_df, x='year', y='transactions', markers=True, text
               labels={'year': 'Year', 'transactions': 'Num of Transactions'},
               color_discrete_sequence=['#7b1e3a'])
 fig.update_traces(textposition='top center').update_xaxes(dtick=1)
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, width='stretch')
 
 if st.toggle('Show the table for all branches'):
-    st.dataframe(branch_years, use_container_width=True)
+    st.dataframe(branch_years, width='stretch')
 
 # ---------------- Insight ----------------
 st.info('**Key insight:** 10 of 15 branches declined from 2022 to 2025. Dortmund, Duisburg and Leipzig dropped sharply '

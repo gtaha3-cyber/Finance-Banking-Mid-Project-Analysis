@@ -8,7 +8,7 @@
 An end-to-end data analysis project on **52,000 banking transactions of a German bank (2022–2025)**. The project covers data quality assessment, data cleaning, exploratory data analysis and an interactive multi-page **Streamlit dashboard** built for each stakeholder of the bank.
 
 > This project was completed as the **Mid Project** of the Data Analysis track at **Epsilon AI**.
-> Main Epsilon AI repository: [Epsilon AI](EPSILON_AI_REPO_LINK)
+> Main Epsilon AI repository: [Epsilon AI](https://github.com/gtaha3-cyber/Epsilon-AI-repo)
 
 ---
 

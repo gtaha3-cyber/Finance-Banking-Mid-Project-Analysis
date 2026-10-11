@@ -27,7 +27,7 @@ with tab1:
     fig = px.imshow(plot_df, text_auto=True, color_continuous_scale=['#f7f7f8', '#7b1e3a'], zmin=0,
                     title='Product Mix per Customer Segment (% of each segment)',
                     labels={'x': 'Account Type', 'y': 'Customer Segment', 'color': '%'})
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
     st.caption('Each row adds up to 100%.')
 
 with tab2:
@@ -37,7 +37,7 @@ with tab2:
                  title=f'Products Used by {segment} Customers (%)',
                  labels={'account_type': 'Account Type', 'proportion': 'Share of Transactions (%)'},
                  color_discrete_sequence=['#7b1e3a'])
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 with tab3:
     plot_df = df.groupby('customer_segment')['customer_id'].nunique().sort_values(ascending=False).reset_index()
@@ -45,7 +45,7 @@ with tab3:
                  title='Number of Customers per Segment',
                  labels={'customer_segment': 'Customer Segment', 'customer_id': 'Customers'},
                  color_discrete_sequence=['#f6a96b'])
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 # ---------------- Insight ----------------
 st.info('**Key insight:** every customer segment uses all 6 products in almost equal shares (about 16–17% each), '
