@@ -5,6 +5,8 @@
 ![Plotly](https://img.shields.io/badge/Plotly-Visualization-3F4F75?logo=plotly&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?logo=streamlit&logoColor=white)
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://finance-banking-dashboard.streamlit.app)
+
 An end-to-end data analysis project on **52,000 banking transactions of a German bank (2022–2025)**. The project covers data quality assessment, data cleaning, exploratory data analysis and an interactive multi-page **Streamlit dashboard** built for each stakeholder of the bank.
 
 > This project was completed as the **Mid Project** of the Data Analysis track at **Epsilon AI**.
@@ -184,6 +186,8 @@ flowchart TD
 
 ## Dashboard
 
+**Live app:** [finance-banking-dashboard.streamlit.app](https://finance-banking-dashboard.streamlit.app)
+
 The Streamlit dashboard has a dedicated page for each stakeholder, with sidebar filters (currency and customer segment) that apply to all pages.
 
 ```mermaid
@@ -226,6 +230,8 @@ flowchart TD
 ```
 
 ## How to Run
+
+The dashboard is available online at the link above. To run it locally:
 
 ```bash
 # activate your own virtual environment, then:
